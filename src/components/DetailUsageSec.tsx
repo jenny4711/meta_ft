@@ -2,7 +2,15 @@ import styles from './DetailUsageSec.module.css'
 
 import SectionHalfBox from './SectionHalfBox';
 import { getPhotoUsage,getStoryUsage} from '@/utlis/apis';
+interface StoryData {
+  message: string;
+  story: number;
+}
 
+interface PhotoData {
+  message: string;
+  photo: number;
+}
 export default function DetailUsageSec(){
   const items =['story','photo']
   
@@ -26,7 +34,7 @@ export default function DetailUsageSec(){
      
         return(
           <>
-          <SectionHalfBox title={item.toUpperCase()} data10={data10[item]} data40={data40[item]} data70={data70[item]} />
+          <SectionHalfBox title={item.toUpperCase()} data10={data10[item] } data40={data40[item]} data70={data70[item]} />
           </>
         )
       

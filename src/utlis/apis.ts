@@ -12,11 +12,13 @@ interface AreaUsage {
 }
 
 interface PhotoUsage {
-  images: any[]; // 예시로 'images'가 배열인 경우
+  message: string;
+  photo: number;
 }
 
 interface StoryUsage {
-  data: any[]; // 예시로 'data'가 배열인 경우
+  message: string;
+  story: number;
 }
 
 interface ButtonUsageData {
@@ -74,7 +76,7 @@ export async function getStoryUsage(start:number,end:number): Promise<StoryUsage
 try{
   const res=await fetch(`${fullUrl}/story/${start}/${end}`)
   const result: StoryUsage = await res.json()
- 
+ console.log(result,'resulteee')
 
   return result
 } catch(error){

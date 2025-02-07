@@ -1,0 +1,24 @@
+.main{
+  display:flex;
+ 
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.emBtns,.otherBtns,.areaGroup{
+
+  display:flex;
+  flex-direction: row;
+  
+ 
+}
+.usageTitle,.areaTitle{
+  flex:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: red;
+  width:90%;
+}

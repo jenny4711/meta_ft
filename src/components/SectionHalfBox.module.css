@@ -1,0 +1,43 @@
+.boxContainer{
+  width:490px;
+  height:380px;
+  border-radius: 20px;
+  background-color: #F2F2F2;
+  margin:10px;
+}
+.titleText{
+  margin:10px;
+  margin-top:8px;
+}
+.dataBox{
+ text-align: center;
+
+  
+}
+
+.groupDiv{
+  display:flex;
+  flex-direction: row;
+ justify-content: center;
+  /* background-color: red; */
+  height:330px;
+ 
+}
+
+.groupBox{
+  display:flex;
+  flex-direction: column-reverse;
+  flex:1;
+  width:100px;
+margin:20px;
+height: auto; /* height 자동 조정 */
+overflow: hidden; 
+  /* background-color: aqua; */
+  border: 1px solid black; 
+  border-radius: 20px;
+
+}
+.box{
+  display:flex;
+  flex-direction: column;
+}

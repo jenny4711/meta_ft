@@ -1,0 +1,24 @@
+.page{
+  display:flex;
+ width:80%;
+  flex-direction: column;
+  background-color:#ffffff;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+
+}
+.detailBox{
+
+  display:flex;
+  flex-direction: row;
+  
+ 
+}
+.title{
+  flex:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #FAFAFA;
+  width:90%;
+}

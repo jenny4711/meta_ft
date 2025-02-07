@@ -30,7 +30,7 @@ export default function UsageSec(){
   
   {
       otherBtns.map(async(item:string)=>{
-        const btns= await getOtherBtnsUsage(item)
+        const btns:any= await getOtherBtnsUsage(item)
      
         return(
           <>

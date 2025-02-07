@@ -1,6 +1,8 @@
 import styles from './DetailUsageSec.module.css'
+
 import SectionHalfBox from './SectionHalfBox';
 import { getPhotoUsage,getStoryUsage} from '@/utlis/apis';
+
 export default function DetailUsageSec(){
   const items =['story','photo']
   
@@ -14,11 +16,11 @@ export default function DetailUsageSec(){
   <div className={styles.detailBox}>
 
     {
-      items.map(async(item:string)=>{
+      items.map(async(item:any)=>{
         
-        const data10= item === 'story'?await getStoryUsage(10,40):await getPhotoUsage(1,1)
-        const data40=item === 'story'?await getStoryUsage(40,70):await getPhotoUsage(2,2)
-        const data70=item === 'story'?await getStoryUsage(70,100):await getPhotoUsage(3,3)
+        const data10:any= item === 'story'?await getStoryUsage(10,40):await getPhotoUsage(1,1)
+        const data40:any=item === 'story'?await getStoryUsage(40,70):await getPhotoUsage(2,2)
+        const data70:any=item === 'story'?await getStoryUsage(70,100):await getPhotoUsage(3,3)
    
   
      
@@ -37,3 +39,5 @@ export default function DetailUsageSec(){
   </div>
   )
 }
+
+

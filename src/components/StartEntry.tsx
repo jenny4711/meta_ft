@@ -8,7 +8,7 @@ interface CountryUsage {
 
 export default async function StartEntry(){
  
-  const byCountry:CountryUsage[] = await getStartEnterUsagedByCountry()
+  const byCountry:any = await getStartEnterUsagedByCountry()
   
   return(
      
@@ -18,7 +18,7 @@ export default async function StartEntry(){
     </div>
 
     <div className={styles.emBtns}>
-      {byCountry.map((item) => {
+      {byCountry.map((item:any) => {
         // null 체크 추가
         if (item.country) {
           return (

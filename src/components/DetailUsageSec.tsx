@@ -2,15 +2,7 @@ import styles from './DetailUsageSec.module.css'
 
 import SectionHalfBox from './SectionHalfBox';
 import { getPhotoUsage,getStoryUsage} from '@/utlis/apis';
-interface StoryData {
-  message: string;
-  story: number;
-}
 
-interface PhotoData {
-  message: string;
-  photo: number;
-}
 export default function DetailUsageSec(){
   const items =['story','photo']
   

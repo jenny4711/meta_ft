@@ -81,7 +81,7 @@ try{
 }
 
 
-export async function getPhotoUsage(start:any,end:any): Promise<PhotoUsage | undefined> {
+export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage | undefined> {
   try{
     const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
   const result: PhotoUsage= await res.json()

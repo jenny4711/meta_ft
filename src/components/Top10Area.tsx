@@ -1,6 +1,7 @@
 import SectionBox from './SectionBox'
 import { getUsageByArea} from '@/utlis/apis';
 import styles from './Top10Area.module.css'
+
 export default async function Top10Area(){
 const area = await getUsageByArea()
 
@@ -15,7 +16,7 @@ const area = await getUsageByArea()
 
     {
      area.map(async(item:any)=>{
-      console.log(item.city,'000000000')
+     
        const country =item.country? item.country:null
        const city = item.city?item.city:null
        const count = item.city?item.count:null

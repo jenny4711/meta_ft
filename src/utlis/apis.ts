@@ -1,5 +1,5 @@
 const url = process.env.NEXT_PUBLIC_API_SERVER_URL
-const fullUrl = `${url}/event/`
+const fullUrl = `${url}/event`
 
 interface CountryUsage {
   usageByCountry: {count:number,country:string}[];
@@ -31,7 +31,7 @@ interface EmotionData {
 
 export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
-    const res = await fetch(`${fullUrl}/getEmotion`)
+    const res = await fetch(`${fullUrl}/ getEmotion`)
   const result: EmotionData  = await res.json()
  
 

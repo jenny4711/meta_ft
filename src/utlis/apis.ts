@@ -26,13 +26,13 @@ interface ButtonUsageData {
 }
 
 interface EmotionData {
-  emotion: string[];  // 예시로 'emotion'이 문자열 배열인 경우
+  emotion: string;  // 예시로 'emotion'이 문자열 배열인 경우
 }
 
 export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
     const res = await fetch(`${fullUrl}/ getEmotion`)
-  const result: EmotionData  = await res.json()
+  const result: any = await res.json()
  
 
   return result

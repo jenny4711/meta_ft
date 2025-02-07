@@ -66,7 +66,7 @@ export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | 
     const result =await  res.json()
     return result
   }catch(error){
-    console.log('getOtherBtnsUsage-error')
+    console.log('getOtherBtnsUsage-error',error)
   }
 }
 
@@ -78,7 +78,7 @@ try{
 
   return result
 } catch(error){
-  console.log('error-getStoryUsage')
+  console.log('error-getStoryUsage',error)
   }
 }
 
@@ -91,7 +91,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
 
   return result
   } catch(error){
-    console.log('error-getPhotoUsage')
+    console.log('error-getPhotoUsage',error)
   }
   }
 

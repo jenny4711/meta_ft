@@ -5,10 +5,10 @@ export default function SectionHalfBox({
   data40,
   data70,
 }: {
-  title: any;
-  data10: any;
-  data40: any;
-  data70: any;
+  title: string;
+  data10: number;
+  data40: number;
+  data70: number;
 }) {
   const height1 = data10 *30
   const height2 = data40 * 30;

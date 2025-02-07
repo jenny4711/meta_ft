@@ -1,7 +1,6 @@
 import styles from './DetailUsageSec.module.css'
-import SectionBox from './SectionBox'
 import SectionHalfBox from './SectionHalfBox';
-import { getEmotionData,getPhotoUsage,getStoryUsage,getUsageByArea} from '@/utlis/apis';
+import { getPhotoUsage,getStoryUsage} from '@/utlis/apis';
 export default function DetailUsageSec(){
   const items =['story','photo']
   

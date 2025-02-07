@@ -15,7 +15,7 @@ export default function UsageSec(){
 
     {
       emBtns.map(async(item:string)=>{
-        const emotion= await getEmotionData()
+        const emotion:any= await getEmotionData()
        
         return(
           <>

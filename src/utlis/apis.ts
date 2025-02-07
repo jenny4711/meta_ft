@@ -94,7 +94,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
   }
 
 
-  export async function getUsageByArea(){
+  export async function getUsageByArea():Promise<AreaUsage[] | undefined>{
 try{
   const  res=await fetch(`${fullUrl}/showArea`)
   const result:any = await res.json()
@@ -107,7 +107,7 @@ try{
 
 
 
-  export async function getStartEnterUsagedByCountry(){
+  export async function getStartEnterUsagedByCountry():Promise<CountryUsage[] | undefined>{
     try{
       const  res=await fetch(`${fullUrl}/usagedCountry`)
   const result:any = await res.json()

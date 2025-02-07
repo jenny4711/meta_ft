@@ -5,7 +5,7 @@
   background-color:#ffffff;
   justify-content: flex-start;
   align-items: flex-start;
-
+  margin-bottom: 50px;
 
 }
 .detailBox{
@@ -19,6 +19,5 @@
   flex:flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #FAFAFA;
   width:90%;
 }

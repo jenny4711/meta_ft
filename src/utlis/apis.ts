@@ -2,11 +2,13 @@ const url = process.env.NEXT_PUBLIC_API_SERVER_URL
 const fullUrl = `${url}/event/`
 
 interface CountryUsage {
-  usageByCountry: any[];  // 예시로 'usageByCountry'가 배열인 경우
+  usageByCountry: {count:number,country:string}[];
+  message:string  // 예시로 'usageByCountry'가 배열인 경우
 }
 
 interface AreaUsage {
-  usageByLocation: any[];  // 예시로 'usageByLocation'이 배열인 경우
+  message:string  
+  usageByLocation: {country:string,city:string,count:number};  // 예시로 'usageByLocation'이 배열인 경우
 }
 
 interface PhotoUsage {
@@ -111,9 +113,10 @@ try{
     try{
       const  res=await fetch(`${fullUrl}/usagedCountry`)
   const result:any = await res.json()
-
+   console.log(result,'result')
   return result.usageByCountry
     }catch(error){
       console.log(error,'error getStartEnterUsagedByCountry')
     }
   }
+

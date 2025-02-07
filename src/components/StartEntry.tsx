@@ -1,15 +1,12 @@
 import { getStartEnterUsagedByCountry } from '@/utlis/apis';
 import styles from './StartEntry.module.css'
 import SectionBox from './SectionBox'
-interface CountryUsage {
-  country: string;
-  count: number;
-}
+
 
 export default async function StartEntry(){
  
-  const byCountry:any = await getStartEnterUsagedByCountry()
-  
+  const byCountry: any= await getStartEnterUsagedByCountry()
+
   return(
      
     <div className={styles.page}>

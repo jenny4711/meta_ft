@@ -1,9 +1,34 @@
 const url = process.env.NEXT_PUBLIC_API_SERVER_URL
 const fullUrl = `${url}/event/`
-export async function getEmotionData(){
+
+interface CountryUsage {
+  usageByCountry: any[];  // 예시로 'usageByCountry'가 배열인 경우
+}
+
+interface AreaUsage {
+  usageByLocation: any[];  // 예시로 'usageByLocation'이 배열인 경우
+}
+
+interface PhotoUsage {
+  images: any[]; // 예시로 'images'가 배열인 경우
+}
+
+interface StoryUsage {
+  data: any[]; // 예시로 'data'가 배열인 경우
+}
+
+interface ButtonUsageData {
+  [key: string]: any;  // 예시로 `key: value` 형태로 받아오는 데이터
+}
+
+interface EmotionData {
+  emotion: string[];  // 예시로 'emotion'이 문자열 배열인 경우
+}
+
+export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
     const res = await fetch(`${fullUrl}/getEmotion`)
-  const result:any = await res.json()
+  const result: EmotionData  = await res.json()
  
 
   return result
@@ -16,7 +41,7 @@ export async function getEmotionData(){
 }
 
 
-export async function getOtherBtnsUsage(item:any){
+export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | undefined> {
   try{
     let res ;
     if(item === 'plusBtn'){
@@ -43,10 +68,10 @@ export async function getOtherBtnsUsage(item:any){
   }
 }
 
-export async function getStoryUsage(start:any,end:any){
+export async function getStoryUsage(start:number,end:number): Promise<StoryUsage | undefined> {
 try{
   const res=await fetch(`${fullUrl}/story/${start}/${end}`)
-  const result:any = await res.json()
+  const result: StoryUsage = await res.json()
  
 
   return result
@@ -56,10 +81,10 @@ try{
 }
 
 
-export async function getPhotoUsage(start:any,end:any){
+export async function getPhotoUsage(start:any,end:any): Promise<PhotoUsage | undefined> {
   try{
     const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
-  const result:any = await res.json()
+  const result: PhotoUsage= await res.json()
  
 
   return result

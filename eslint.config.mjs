@@ -11,11 +11,13 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    rules: {
+  
+    ...compat.rules( {
+      "@typescript-eslint/no-unsed-vars": "off",
       "@typescript-eslint/no-explicit-any": "off",  // `any`를 사용할 수 있도록 비활성화
-    },
-  },
+      "@typescript-eslint/no-empty-object-type": "off",
+    }),
+  
 ];
 
 export default eslintConfig;

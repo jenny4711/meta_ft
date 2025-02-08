@@ -1,3 +1,4 @@
+"use server"
 const url = process.env.NEXT_PUBLIC_API_SERVER_URL
 const fullUrl = `${url}/event`
 

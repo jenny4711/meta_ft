@@ -1,4 +1,4 @@
-
+'use client'
 import styles  from './SectionBox.module.css'
 
 export default function SectionBox({title,data,width,height}:{title:string,data:number,width:number,height:number}){

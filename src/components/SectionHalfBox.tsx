@@ -1,3 +1,4 @@
+'use client'
 import styles from './SectionHalfBox.module.css';
 export default function SectionHalfBox({
   title,

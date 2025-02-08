@@ -1,3 +1,4 @@
+
 import SectionBox from './SectionBox'
 import { getUsageByArea} from '@/utlis/apis';
 import styles from './Top10Area.module.css'

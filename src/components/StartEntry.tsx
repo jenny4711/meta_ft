@@ -1,37 +1,55 @@
+'use client'
 
-import { getStartEnterUsagedByCountry } from '@/utlis/apis';
+import { useState, useEffect } from 'react'
+import { getStartEnterUsagedByCountry } from '@/utlis/apis'
 import styles from './StartEntry.module.css'
 import SectionBox from './SectionBox'
 
+interface CountryData {
+  country: string;
+  count: number;
+}
 
-export default async function StartEntry(){
- 
-  const byCountry: any= await getStartEnterUsagedByCountry()
+// Initial data
+const initialData: CountryData[] = [
+  { country: 'Loading...', count: 0 }
+];
 
-  return(
-     
-    <div className={styles.page}>
-    <div className={styles.usageTitle}>
-      <h2>INSTALLED BY COUNTRY</h2>
-    </div>
+export default function StartEntry() {
+  const [byCountry, setByCountry] = useState<CountryData[]>(initialData)
 
-    <div className={styles.emBtns}>
-      {byCountry.map((item:any) => {
-        // null 체크 추가
-        if (item.country) {
-          return (
-            <SectionBox
-              key={item.country}  // 고유한 key를 추가하는 것이 좋습니다.
-              title={item.country.toUpperCase()}
-              data={item.count}
-              width={150}
-              height={100}
-            />
-          );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getStartEnterUsagedByCountry()
+        if (Array.isArray(data)) {
+          setByCountry(data.filter(item => item.country != null))
         }
-        return null; // country가 null일 경우 아무것도 반환하지 않음
-      })}
+      } catch (error) {
+        console.error('Error fetching country data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.usageTitle}>
+        <h2>INSTALLED BY COUNTRY</h2>
+      </div>
+
+      <div className={styles.emBtns}>
+        {byCountry.map((item: CountryData) => (
+          <SectionBox
+            key={item.country}
+            title={item.country.toUpperCase()}
+            data={item.count}
+            width={150}
+            height={100}
+          />
+        ))}
+      </div>
     </div>
-  </div>
   )
 }

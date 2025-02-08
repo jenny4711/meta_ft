@@ -91,7 +91,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
     const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
   const result: PhotoUsage= await res.json()
  
-
+console.log(result,'result')
   return result
   } catch(error){
     console.log('error-getPhotoUsage',error)

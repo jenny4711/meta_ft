@@ -1,79 +1,92 @@
+'use client'
 
+import { useState, useEffect } from 'react'
 import styles from './UsageSec.module.css'
 import SectionBox from './SectionBox'
 import { getEmotionData, getOtherBtnsUsage } from '@/utlis/apis'
 
+// 타입 정의는 이전과 동일
+
 export default function UsageSec() {
+  const [emotionsData, setEmotionsData] = useState<any>([])
+  const [btnsData, setBtnsData] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(true)
+
   const emBtns = ['veryHappy', 'happy', 'neutral', 'sad', 'worst']
   const otherBtns = ['plusBtn', 'dark', 'light', 'deleteAllEntries', 'story', 'photo']
 
-  const fetchData = async () => {
-    // 'emotion' 및 'btns' 데이터를 비동기적으로 불러옵니다.
-    const emotions = await Promise.all(
-      emBtns.map(async (item: string) => {
-        const emotion = await getEmotionData()
-        console.log(emotion,'emotion')
-        return { item, emotion }
-      })
-    )
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      try {
+        const emotions: any = await Promise.all(
+          emBtns.map(async (item) => {
+            const emotion = await getEmotionData()
+            return { item, emotion }
+          })
+        )
 
-    const btnsData = await Promise.all(
-      otherBtns.map(async (item: string) => {
-        const btns = await getOtherBtnsUsage(item)
-        return { item, btns }
-      })
-    )
+        const btns: any= await Promise.all(
+          otherBtns.map(async (item) => {
+            const btnData = await getOtherBtnsUsage(item)
+            return { item, btnData }
+          })
+        )
 
-    return { emotions, btnsData }
-  }
+        setEmotionsData(emotions)
+        setBtnsData(btns)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
 
-  const renderSection = async () => {
-    const { emotions, btnsData } = await fetchData()
+    fetchData()
+  }, [])
 
-    return (
-      <>
-        <div className={styles.page}>
-          <div className={styles.usageTitle}>
-            <h2>USAGE</h2>
-          </div>
+  // 로딩 중 플레이스홀더 컴포넌트
+  const LoadingPlaceholder = () => (
+    <div className={styles.loadingPlaceholder}>
+      Loading...
+    </div>
+  )
 
-          <div className={styles.emBtns}>
-            {emotions.map(({ item, emotion }) => {
-              if (!emotion || emotion[item] === undefined) {
-                return null // emotion[item]이 존재하지 않으면 해당 버튼을 렌더링하지 않습니다
-              }
-              return (
-                <SectionBox
-                  key={item}
-                  title={item.toUpperCase()}
-                  data={emotion[item]}
-                  width={180}
-                  height={100}
-                />
-              )
-            })}
-          </div>
+  return (
+    <div className={styles.page}>
+      <div className={styles.usageTitle}>
+        <h2>USAGE</h2>
+      </div>
 
-          <div className={styles.otherBtns}>
-            {btnsData.map(({ item, btns }) => {
-              if (!btns || btns[item] === undefined) {
-                return null // btns[item]이 존재하지 않으면 해당 버튼을 렌더링하지 않습니다
-              }
-              return (
-                <SectionBox
-                  key={item}
-                  title={item.toUpperCase()}
-                  data={btns[item]}
-                  width={180}
-                  height={100}
-                />
-              )
-            })}
-          </div>
-        </div>
-      </>
-    )
-  }
+      <div className={styles.emBtns}>
+        {emBtns.map((item) => {
+          const emotionData = emotionsData.find(e => e.item === item)
+          return (
+            <SectionBox
+              key={item}
+              title={item.toUpperCase()}
+              data={isLoading ? 0 : emotionData?.emotion?.[item as any]}
+              width={180}
+              height={100}
+            />
+          )
+        })}
+      </div>
 
-  return renderSection()
+      <div className={styles.otherBtns}>
+        {otherBtns.map((item) => {
+          const btnData = btnsData.find(b => b.item === item)
+          return (
+            <SectionBox
+              key={item}
+              title={item.toUpperCase()}
+              data={isLoading ? 0 : btnData?.btnData?.[item]}
+              width={180}
+              height={100}
+            />
+          )
+        })}
+      </div>
+    </div>
+  )
 }

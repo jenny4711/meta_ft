@@ -31,9 +31,9 @@ interface EmotionData {
 
 export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
-    const res = await fetch(`${fullUrl}/ getEmotion`)
+    const res = await fetch(`${fullUrl}/getEmotion`)
   const result: any = await res.json()
- 
+ console.log(result,'result')
 
   return result
   

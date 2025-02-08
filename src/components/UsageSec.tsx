@@ -11,6 +11,7 @@ export default function UsageSec() {
     const emotions = await Promise.all(
       emBtns.map(async (item: string) => {
         const emotion = await getEmotionData()
+        console.log(emotion,'emotion')
         return { item, emotion }
       })
     )

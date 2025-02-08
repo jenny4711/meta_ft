@@ -4,9 +4,14 @@ import DetailUsageSec from '@/components/DetailUsageSec';
 import Top10Area from '@/components/Top10Area';
 import StartEntry from '@/components/StartEntry';
 import { getEmotionData, getOtherBtnsUsage } from '@/utlis/apis'
+
+
+
+
 export default async function Home() {
   const emBtns = ['veryHappy', 'happy', 'neutral', 'sad', 'worst']
-  const otherBtns = ['plusBtn', 'dark', 'light', 'deleteAllEntries', 'story', 'photo']
+const otherBtns = ['plusBtn', 'dark', 'light', 'deleteAllEntries', 'story', 'photo']
+
   const emotions: any = await Promise.all(
     emBtns.map(async (item) => {
       const emotion = await getEmotionData()

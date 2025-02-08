@@ -32,7 +32,7 @@ interface EmotionData {
 
 export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
-    const res = await fetch(`${fullUrl}/getEmotion`)
+    const res = await fetch(`${fullUrl}/getEmotion`,{cache:"no-store"})
   const result: any = await res.json()
  console.log(result,'result')
 
@@ -50,21 +50,21 @@ export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | 
   try{
     let res ;
     if(item === 'plusBtn'){
-        res = await fetch(`${fullUrl}/plusbtn`)
+        res = await fetch(`${fullUrl}/plusbtn`,{cache:"no-store"})
     }else if (item === 'dark'){
-      res=await fetch(`${fullUrl}/theme`)
+      res=await fetch(`${fullUrl}/theme`,{cache:"no-store"})
     }else if (item === 'light'){
-      res=await fetch(`${fullUrl}/theme`)
+      res=await fetch(`${fullUrl}/theme`,{cache:"no-store"})
     }else if(item ==='deleteAllEntries' ){
-      res=await fetch(`${fullUrl}/deletedAll`)
+      res=await fetch(`${fullUrl}/deletedAll`,{cache:"no-store"})
     }else if(item ==='story'){
       const start =1
       const end =100
-      res=await fetch(`${fullUrl}/story/${start}/${end}`)
+      res=await fetch(`${fullUrl}/story/${start}/${end}`,{cache:"no-store"})
     }else {
       const start =1
       const end =3
-      res=await fetch(`${fullUrl}/photo/${start}/${end}`)
+      res=await fetch(`${fullUrl}/photo/${start}/${end}`,{cache:"no-store"})
     }
     const result =await  res.json()
     return result
@@ -75,7 +75,7 @@ export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | 
 
 export async function getStoryUsage(start:number,end:number): Promise<StoryUsage | undefined> {
 try{
-  const res=await fetch(`${fullUrl}/story/${start}/${end}`)
+  const res=await fetch(`${fullUrl}/story/${start}/${end}`,{cache:"no-store"})
   const result: StoryUsage = await res.json()
 
 
@@ -88,7 +88,7 @@ try{
 
 export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage | undefined> {
   try{
-    const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
+    const  res=await fetch(`${fullUrl}/photo/${start}/${end}`,{cache:"no-store"})
   const result: PhotoUsage= await res.json()
  
 
@@ -101,7 +101,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
 
   export async function getUsageByArea():Promise<AreaUsage[] | undefined>{
 try{
-  const  res=await fetch(`${fullUrl}/showArea`)
+  const  res=await fetch(`${fullUrl}/showArea`,{cache:"no-store"})
   const result:any = await res.json()
 
   return result.usageByLocation
@@ -114,7 +114,7 @@ try{
 
   export async function getStartEnterUsagedByCountry():Promise<CountryUsage[] | undefined>{
     try{
-      const  res=await fetch(`${fullUrl}/usagedCountry`)
+      const  res=await fetch(`${fullUrl}/usagedCountry`,{cache:"no-store"})
   const result:any = await res.json()
 
   return result.usageByCountry

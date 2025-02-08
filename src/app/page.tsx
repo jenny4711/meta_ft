@@ -3,11 +3,27 @@ import UsageSec from '@/components/UsageSec';
 import DetailUsageSec from '@/components/DetailUsageSec';
 import Top10Area from '@/components/Top10Area';
 import StartEntry from '@/components/StartEntry';
+import { getEmotionData, getOtherBtnsUsage } from '@/utlis/apis'
+export default async function Home() {
+  const emBtns = ['veryHappy', 'happy', 'neutral', 'sad', 'worst']
+  const otherBtns = ['plusBtn', 'dark', 'light', 'deleteAllEntries', 'story', 'photo']
+  const emotions: any = await Promise.all(
+    emBtns.map(async (item) => {
+      const emotion = await getEmotionData()
+      return { item, emotion }
+    })
+  )
 
-export default function Home() {
+  const btns: any= await Promise.all(
+    otherBtns.map(async (item) => {
+      const btnData = await getOtherBtnsUsage(item)
+      return { item, btnData }
+    })
+  )
+
   return (
     <div className={styles.main}>
-      <UsageSec />
+      <UsageSec emotions={emotions} btns={btns}/>
       <DetailUsageSec />
       <Top10Area />
       <StartEntry />

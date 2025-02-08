@@ -77,7 +77,7 @@ export async function getStoryUsage(start:number,end:number): Promise<StoryUsage
 try{
   const res=await fetch(`${fullUrl}/story/${start}/${end}`)
   const result: StoryUsage = await res.json()
- console.log(result,'resulteee')
+
 
   return result
 } catch(error){
@@ -91,7 +91,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
     const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
   const result: PhotoUsage= await res.json()
  
-console.log(result,'result')
+
   return result
   } catch(error){
     console.log('error-getPhotoUsage',error)
@@ -116,7 +116,7 @@ try{
     try{
       const  res=await fetch(`${fullUrl}/usagedCountry`)
   const result:any = await res.json()
-   console.log(result,'result')
+
   return result.usageByCountry
     }catch(error){
       console.log(error,'error getStartEnterUsagedByCountry')

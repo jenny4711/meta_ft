@@ -16,35 +16,28 @@ const initialData: Top10[] = [
   { country: 'Loading', city: 'Loading', count: 0 }
 ];
 
-export default function Top10Area() {
+export default function Top10Area({data}:any) {
   const [area, setArea] = useState<Top10[]>(initialData)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getUsageByArea()
-        if (Array.isArray(data)) {
-          const filteredData = data
-            .filter((item): item is any => 
-              item !== null && 
-              typeof item === 'object' && 
-              'city' in item && 
-              item.city !== null
-            )
-            .map((item : any)=> ({
-              country: item.country || 'Unknown',
-              city: item.city || 'Unknown',
-              count: item.count || 0
-            }))
-          setArea(filteredData)
-        }
-      } catch (error) {
-        console.error('Error fetching area data:', error)
-      }
+    if (Array.isArray(data)) {
+      const filteredData = data
+        .filter((item): item is any => 
+          item !== null && 
+          typeof item === 'object' && 
+          'city' in item && 
+          item.city !== null
+        )
+        .map((item : any)=> ({
+          country: item.country || 'Unknown',
+          city: item.city || 'Unknown',
+          count: item.count || 0
+        }))
+      setArea(filteredData)
     }
 
-    fetchData()
-  }, [])
+   
+  }, [data])
 
   return (
     <div className={styles.page}>
@@ -55,7 +48,8 @@ export default function Top10Area() {
       <div className={styles.emBtns}>
         {area.map((item: Top10) => {
           const title = `${item.city}, ${item.country}`
-          
+          console.log(title,'title')
+          console.log(item.count,'item.count')
           return (
             <SectionBox 
               key={`${item.city}-${item.country}`}

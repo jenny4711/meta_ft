@@ -14,7 +14,7 @@ export default function SectionHalfBox({
   const height1 = data10 *10
   const height2 = data40 * 10;
   const height3 = data70 * 10;
-
+console.log(height1,'height1')
   return (
     <div className={styles.boxContainer}>
       <h5 className={styles.titleText}>{title}</h5>

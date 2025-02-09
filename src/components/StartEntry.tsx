@@ -15,23 +15,15 @@ const initialData: CountryData[] = [
   { country: 'Loading...', count: 0 }
 ];
 
-export default function StartEntry() {
-  const [byCountry, setByCountry] = useState<any>(initialData)
+export default function StartEntry({data}:any) {
+  const [byCountry, setByCountry] = useState<any>([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data:any = await getStartEnterUsagedByCountry()
-        if (Array.isArray(data)) {
-          setByCountry(data.filter(item => item.country != null))
-        }
-      } catch (error) {
-        console.error('Error fetching country data:', error)
-      }
+    if (Array.isArray(data)) {
+      setByCountry(data.filter(item => item.country != null))
     }
-
-    fetchData()
-  }, [])
+   
+  }, [data])
 
   return (
     <div className={styles.page}>

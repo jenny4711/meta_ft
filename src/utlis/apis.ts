@@ -1,7 +1,7 @@
 "use server"
 const url = process.env.NEXT_PUBLIC_API_SERVER_URL
 const fullUrl = `${url}/event`
-
+import { revalidateTag } from 'next/cache'
 interface CountryUsage {
   usageByCountry: {count:number,country:string}[];
   message:string  // 예시로 'usageByCountry'가 배열인 경우
@@ -30,11 +30,16 @@ interface EmotionData {
   emotion: string;  // 예시로 'emotion'이 문자열 배열인 경우
 }
 
+export async function refreshData() {
+  revalidateTag('all')
+}
+
 export async function getEmotionData(): Promise<EmotionData | undefined> {
   try{
-    const res = await fetch(`${fullUrl}/getEmotion`,{next:{revalidate:3}})
+   
+    const res = await fetch(`${fullUrl}/getEmotion`,{next:{tags:['all']}} )
   const result: any = await res.json()
- console.log(result,'result')
+
 
   return result
   
@@ -50,21 +55,21 @@ export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | 
   try{
     let res ;
     if(item === 'plusBtn'){
-        res = await fetch(`${fullUrl}/plusbtn`)
+        res = await fetch(`${fullUrl}/plusbtn`,{next:{tags:['all']}})
     }else if (item === 'dark'){
-      res=await fetch(`${fullUrl}/theme`)
+      res=await fetch(`${fullUrl}/theme`,{next:{tags:['all']}})
     }else if (item === 'light'){
-      res=await fetch(`${fullUrl}/theme`)
+      res=await fetch(`${fullUrl}/theme`,{next:{tags:['all']}})
     }else if(item ==='deleteAllEntries' ){
-      res=await fetch(`${fullUrl}/deletedAll`)
+      res=await fetch(`${fullUrl}/deletedAll`,{next:{tags:['all']}})
     }else if(item ==='story'){
       const start =1
       const end =100
-      res=await fetch(`${fullUrl}/story/${start}/${end}`)
+      res=await fetch(`${fullUrl}/story/${start}/${end}`,{next:{tags:['all']}})
     }else {
       const start =1
       const end =3
-      res=await fetch(`${fullUrl}/photo/${start}/${end}`)
+      res=await fetch(`${fullUrl}/photo/${start}/${end}`,{next:{tags:['all']}})
     }
     const result =await  res.json()
     return result
@@ -75,7 +80,7 @@ export async function getOtherBtnsUsage(item:string): Promise<ButtonUsageData | 
 
 export async function getStoryUsage(start:number,end:number): Promise<StoryUsage | undefined> {
 try{
-  const res=await fetch(`${fullUrl}/story/${start}/${end}`)
+  const res=await fetch(`${fullUrl}/story/${start}/${end}`,{next:{tags:['all']}})
   const result: StoryUsage = await res.json()
 
 
@@ -88,7 +93,7 @@ try{
 
 export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage | undefined> {
   try{
-    const  res=await fetch(`${fullUrl}/photo/${start}/${end}`)
+    const  res=await fetch(`${fullUrl}/photo/${start}/${end}`,{next:{tags:['all']}})
   const result: PhotoUsage= await res.json()
  
 
@@ -101,7 +106,7 @@ export async function getPhotoUsage(start:number,end:number): Promise<PhotoUsage
 
   export async function getUsageByArea():Promise<AreaUsage[] | undefined>{
 try{
-  const  res=await fetch(`${fullUrl}/showArea`)
+  const  res=await fetch(`${fullUrl}/showArea`,{next:{tags:['all']}})
   const result:any = await res.json()
 
   return result.usageByLocation
@@ -114,7 +119,7 @@ try{
 
   export async function getStartEnterUsagedByCountry():Promise<CountryUsage[] | undefined>{
     try{
-      const  res=await fetch(`${fullUrl}/usagedCountry`)
+      const  res=await fetch(`${fullUrl}/usagedCountry`,{next:{tags:['all']}})
   const result:any = await res.json()
 
   return result.usageByCountry

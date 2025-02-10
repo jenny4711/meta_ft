@@ -1,5 +1,5 @@
 export function generateMonthArray(fromM:any, fromY:any, toM:any, toY:any) {
-  let months:any = [];
+  const months:any = [];
   
   if (fromY === toY) {
     // 같은 해라면 단순히 fromM부터 toM까지 배열 생성
@@ -21,39 +21,39 @@ export function generateMonthArray(fromM:any, fromY:any, toM:any, toY:any) {
 
 
 export function filterResult (result:any,monthArr:any){
-  let arr=[]
-  const first = result.filter((item)=>{
+  const arr=[]
+  const first = result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
   
     return m === monthArr[0] 
   })
 
-  const second = result.filter((item)=>{
+  const second = result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
  
     return m === monthArr[1] 
   })
-  const third = result.filter((item)=>{
+  const third = result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
     
     return m === monthArr[2] 
   })
 
-  const fourth= result.filter((item)=>{
+  const fourth= result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
    
     return m === monthArr[3] 
   })
 
-  const fifth= result.filter((item)=>{
+  const fifth= result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
-    console.log(monthArr,'monthArr')
+  
     return m === monthArr[4] 
   })
 
-  const sixth= result.filter((item)=>{
+  const sixth= result.filter((item:any)=>{
     const m = new Date(item.timestamp).getMonth()+1
-    console.log(monthArr,'monthArr')
+   
     return m === monthArr[5] 
   })
 

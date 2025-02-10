@@ -1,5 +1,5 @@
 .boxContainer{
-  width:580px;
+  /* width:580px; */
   height:380px;
   border-radius: 20px;
   background-color: #F2F2F2;
@@ -40,4 +40,12 @@ overflow: hidden;
 .box{
   display:flex;
   flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+  .groupBox {
+    width: 50px;
+   
+  }
 }

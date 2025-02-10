@@ -5,7 +5,7 @@ import Top10Area from '@/components/Top10Area';
 import StartEntry from '@/components/StartEntry';
 import { getEmotionData, getOtherBtnsUsage ,getStoryUsage,getPhotoUsage,getStartEnterUsagedByCountry,getUsageByArea} from '@/utlis/apis'
 import RefreshButton from '@/components/RefreshButton';
-
+import Head from 'next/head';
 
 export default async function Home() {
   const emBtns = ['veryHappy', 'happy', 'neutral', 'sad', 'worst']
@@ -53,6 +53,10 @@ const items = ['story', 'photo'] ;
   const area:any =await getUsageByArea()
 
   return (
+    <>
+    <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
     <div className={styles.main}>
     <RefreshButton />
       <UsageSec emotions={emotions} btns={btns}/>
@@ -60,6 +64,7 @@ const items = ['story', 'photo'] ;
       <Top10Area data={area}/>
       <StartEntry data={data}/>
     </div>
+    </>
   );
 }
 //각기능 횟수 보여주는 박스 11개

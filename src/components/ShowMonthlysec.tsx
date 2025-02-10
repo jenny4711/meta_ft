@@ -27,7 +27,7 @@ const langMonths = changedMonthToLang(monthArr)
   return(
     <div className={styles.page}>
        <div className={styles.usageTitle}>
-        <h2>ALL BUTTON USAGE</h2>
+        <h2>MONTHLY USAGE (Last 6 Months)</h2>
       </div>
  <Line data={data} />
     </div>

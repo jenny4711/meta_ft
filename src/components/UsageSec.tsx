@@ -26,7 +26,7 @@ export default function UsageSec({emotions, btns}:any) {
    
     <div className={styles.page}>
       <div className={styles.usageTitle}>
-        <h2>USAGE</h2>
+        <h2>ALL BUTTON USAGE</h2>
       </div>
 
       <div className={styles.emBtns}>

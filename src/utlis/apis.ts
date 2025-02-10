@@ -128,3 +128,22 @@ try{
     }
   }
 
+  export async function getCurrentMonthUsage(){
+    try{
+      const res = await fetch(`${fullUrl}/currentMonty`,{next:{tags:['all']}} )
+      const result:any= await res.json()
+      return result.monthlyEvents
+    }catch(error){
+      console.log(error,'error getCurrentMonthUsage')
+    }
+  }
+
+  export async function getMonthlyUsage({fromM,fromY,toM,toY}:any){
+    try{
+      const res = await fetch(`${fullUrl}/byMonth/${fromM}/${fromY}/${toM}/${toY}`,{next:{tags:['all']}} )
+      const result:any= await res.json()
+      return result. eventsInCustomMonth
+    }catch(error){
+      console.log(error,'error getMonthlyUsage')
+    }
+  }

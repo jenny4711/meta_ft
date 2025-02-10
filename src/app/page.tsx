@@ -3,10 +3,11 @@ import UsageSec from '@/components/UsageSec';
 import DetailUsageSec from '@/components/DetailUsageSec';
 import Top10Area from '@/components/Top10Area';
 import StartEntry from '@/components/StartEntry';
-import { getEmotionData, getOtherBtnsUsage ,getStoryUsage,getPhotoUsage,getStartEnterUsagedByCountry,getUsageByArea} from '@/utlis/apis'
+import {getMonthlyUsage, getEmotionData, getOtherBtnsUsage ,getStoryUsage,getPhotoUsage,getStartEnterUsagedByCountry,getUsageByArea, getCurrentMonthUsage} from '@/utlis/apis'
 import RefreshButton from '@/components/RefreshButton';
 import Head from 'next/head';
-
+import { ShowMonthlysec } from '@/components/ShowMonthlysec';
+import { generateMonthArray } from '@/utlis/toolFn';
 export default async function Home() {
   const emBtns = ['veryHappy', 'happy', 'neutral', 'sad', 'worst']
 const otherBtns = ['plusBtn', 'dark', 'light', 'deleteAllEntries', 'story', 'photo']
@@ -48,9 +49,26 @@ const items = ['story', 'photo'] ;
       data70: data70?.[item] ?? 0
     }
   }))
+  const today = new Date();
+  const toM = today.getMonth() + 1; // JavaScript에서 getMonth()는 0부터 시작하므로 +1 해줌
+  const toY = today.getFullYear();
+  
+  // 5개월 전 계산
+  let fromM = toM - 5;
+  let fromY = toY;
+  
+  if (fromM <= 0) {
+    fromM += 12; // 음수 방지: 이전 해의 월로 변환
+    fromY -= 1;  // 전년도 처리
+  }
+  
+  // 예시: fromM과 fromY를 출력해서 확인
 
   const data:any = await getStartEnterUsagedByCountry()
   const area:any =await getUsageByArea()
+const currentMonthly= await getCurrentMonthUsage()
+const eachMonth = await getMonthlyUsage({fromM,fromY,toM,toY})
+const monthArr = generateMonthArray(fromM,fromY,toM,toY)
 
   return (
     <>
@@ -59,10 +77,12 @@ const items = ['story', 'photo'] ;
       </Head>
     <div className={styles.main}>
     <RefreshButton />
+    <ShowMonthlysec result={eachMonth} monthArr={monthArr}/>
       <UsageSec emotions={emotions} btns={btns}/>
       <DetailUsageSec newItemsData ={newItemsData} />
       <Top10Area data={area}/>
       <StartEntry data={data}/>
+
     </div>
     </>
   );

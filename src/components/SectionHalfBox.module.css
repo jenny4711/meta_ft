@@ -41,7 +41,22 @@ overflow: hidden;
   display:flex;
   flex-direction: column;
 }
+.result{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 
+  height:50px;
+
+}
+.result p{
+  margin:0;
+}
+.result .title{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
 @media (max-width: 768px) {
   .groupBox {

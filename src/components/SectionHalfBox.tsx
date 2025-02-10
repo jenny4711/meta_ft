@@ -23,7 +23,10 @@ console.log(height1,'height1')
         <div className={styles.groupDiv}>
           {/* --------------------------------- */}
           <div className={styles.box}>
-          <p>{title==='STORY'?'10-40':'1'}</p>
+            <div className={styles.result}>
+          <p className={styles.title}>{title==='STORY'?'10-40':'1'}</p>
+          <p >{data10}</p>
+          </div>
           <div className={styles.groupBox}>
             <div
               style={{
@@ -36,10 +39,15 @@ console.log(height1,'height1')
             />
             
           </div>
+         
           </div>
-
+          
           <div className={styles.box}>
-          <p>{title==='STORY'?'40-70':'2'}</p>
+          <div className={styles.result}>
+          <p className={styles.title}>{title==='STORY'?'40-70':'2'}</p>
+          <p >{data40}</p>
+          </div>
+         
           <div className={styles.groupBox}>
         
      
@@ -54,7 +62,11 @@ console.log(height1,'height1')
             </div>
           </div>
           <div className={styles.box}>
-          <p>{title==='STORY'?'70-100':'3'}</p>
+          <div className={styles.result}>
+          <p className={styles.title}>{title==='STORY'?'70-100':'3'}</p>
+          <p >{data70}</p>
+          </div>
+       
           <div className={styles.groupBox}>
             <div
               style={{

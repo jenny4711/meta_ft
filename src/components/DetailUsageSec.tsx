@@ -23,7 +23,7 @@ export default function DetailUsageSec({newItemsData }:{newItemsData :any}) {
   return (
     <div className={styles.page}>
       <div className={styles.title}>
-        <h2>STORY AND PHOTO</h2>
+        <h2>STORY AND PHOTO SIZE</h2>
       </div>
       <div className={styles.detailBox}>
         {newItemsData .map(({ item, data10, data40, data70 }) => {

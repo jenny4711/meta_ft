@@ -1,40 +1,50 @@
-<<<<<<< HEAD
-# metaFt
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daymoji iOS 앱 분석 대시보드
 
-## Getting Started
+## 📱 프로젝트 개요
 
-First, run the development server:
+Daymoji는 iOS 모바일 앱으로, 사용자들의 이모지 사용 패턴과 앱 활용도를 분석하는 메타데이터 대시보드입니다. 이 프로젝트는 사용자 행동 분석, 기능별 사용률, 지역별 통계 등을 시각화하여 제공합니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 주요 기능
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📊 사용량 분석
+- **월별 사용 그래프**: 사용자들이 앱을 얼마나 자주 사용하는지 월별로 시각화
+- **일일/월간 활성 사용자 수** 추적
+- **세션 지속 시간** 및 **앱 사용 빈도** 분석
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 😊 이모지 사용 통계
+- **기본 이모지 버튼 사용률**: 사용자들이 기본 이모지를 얼마나 자주 사용하는지 분석
+- **인기 이모지 순위**: 가장 많이 사용되는 이모지 종류별 통계
+- **이모지 사용 패턴**: 시간대별, 상황별 이모지 사용 빈도
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🖼️ 미디어 콘텐츠 분석
+- **이미지 업로드 통계**: 사용자들이 얼마나 자주 이미지를 업로드하는지 분석
+- **스토리 기능 사용률**: 스토리 기능의 활용도 및 참여율
+- **콘텐츠 생성 패턴**: 이미지와 스토리의 생성 빈도 및 트렌드
 
-## Learn More
+### 🌍 지역별 통계
+- **국가별 사용자 분포**: 어느 나라에서 가장 많은 사용자가 있는지 분석
+- **설치된 사용자 수**: 국가별 설치된 사용자 수 통계
+- **지역별 사용 패턴**: 국가별로 다른 사용 행동 분석
 
-To learn more about Next.js, take a look at the following resources:
+## 📈 대시보드 구성
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. 사용량 
+- 월별 사용자 활성도 그래프
+- 일일/주간/월간 사용자 수 추이
+- 앱 사용 시간 및 세션 분석
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. 기능별 사용률 
+- 기본 이모지 버튼 사용률
+- 이미지 업로드 빈도
+- 스토리 기능 활용도
 
-## Deploy on Vercel
+### 3. 지역별 통계 
+- 국가별 사용자 분포 지도
+- 설치된 사용자 수 (국가별)
+- 지역별 사용 패턴 분석
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ 기술 스택
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> c21d76c (init)
+- **프론트엔드**: Next.js
+- **백엔드**: Node.js 
+- **데이터베이스**: MongoDB 

@@ -1,50 +1,67 @@
-# Daymoji iOS 앱 분석 대시보드
 
-## 📱 프로젝트 개요
+# 📊 Daymoji iOS App Usage Dashboard
 
-Daymoji는 iOS 모바일 앱으로, 사용자들의 이모지 사용 패턴과 앱 활용도를 분석하는 메타데이터 대시보드입니다. 이 프로젝트는 사용자 행동 분석, 기능별 사용률, 지역별 통계 등을 시각화하여 제공합니다.
+## 📌 Project Overview
 
-## 🎯 주요 기능
+The **Daymoji** iOS app usage dashboard is a metadata visualization project that analyzes user emoji usage patterns and app activity. This project includes user behavior analysis, feature-specific usage metrics, and more.
 
-### 📊 사용량 분석
-- **월별 사용 그래프**: 사용자들이 앱을 얼마나 자주 사용하는지 월별로 시각화
-- **일일/월간 활성 사용자 수** 추적
-- **세션 지속 시간** 및 **앱 사용 빈도** 분석
+---
 
-### 😊 이모지 사용 통계
-- **기본 이모지 버튼 사용률**: 사용자들이 기본 이모지를 얼마나 자주 사용하는지 분석
-- **인기 이모지 순위**: 가장 많이 사용되는 이모지 종류별 통계
-- **이모지 사용 패턴**: 시간대별, 상황별 이모지 사용 빈도
+## 🌟 Main Features
 
-### 🖼️ 미디어 콘텐츠 분석
-- **이미지 업로드 통계**: 사용자들이 얼마나 자주 이미지를 업로드하는지 분석
-- **스토리 기능 사용률**: 스토리 기능의 활용도 및 참여율
-- **콘텐츠 생성 패턴**: 이미지와 스토리의 생성 빈도 및 트렌드
+### 📈 Usage Analysis
+- **Overall Usage Graphs**: Visualize how frequently and how often users open the app
+- **Session Analysis**: Analyze session length and frequency
+- **Time-of-Day Usage**: Analyze usage patterns based on time of day
 
-### 🌍 지역별 통계
-- **국가별 사용자 분포**: 어느 나라에서 가장 많은 사용자가 있는지 분석
-- **설치된 사용자 수**: 국가별 설치된 사용자 수 통계
-- **지역별 사용 패턴**: 국가별로 다른 사용 행동 분석
+### 😀 Emoji Usage Analysis
+- **Basic Emoji Usage**: Analyze how frequently users use default emojis
+- **Most Used Emojis**: Rank emojis based on usage frequency
+- **Emoji Usage Trends**: Analyze changes and trends in emoji usage over time
 
-## 📈 대시보드 구성
+### 🖼️ Media Upload Analysis
+- **Upload Frequency**: Analyze how often users upload images
+- **Upload Timing**: Visualize uploads by date and time
+- **Media Trends**: Analyze volume and trends of image uploads
 
-### 1. 사용량 
-- 월별 사용자 활성도 그래프
-- 일일/주간/월간 사용자 수 추이
-- 앱 사용 시간 및 세션 분석
+### 📅 Calendar View
+- **Daily/Weekly Calendar View**: View user activity in calendar format
+- **Emoji Overlay**: Display emoji usage on calendar
 
-### 2. 기능별 사용률 
-- 기본 이모지 버튼 사용률
-- 이미지 업로드 빈도
-- 스토리 기능 활용도
+### 🗺️ Regional Analysis
+- **Location-Based Analysis**: Visualize user activity on a map
+- **Regional Behavior Differences**: Analyze regional differences in app and emoji usage
 
-### 3. 지역별 통계 
-- 국가별 사용자 분포 지도
-- 설치된 사용자 수 (국가별)
-- 지역별 사용 패턴 분석
+---
 
-## 🛠️ 기술 스택
+## 🧩 Dashboard Components
 
-- **프론트엔드**: Next.js
-- **백엔드**: Node.js 
-- **데이터베이스**: MongoDB 
+1. **Usage**
+   - Daily/Weekly/Monthly usage graphs
+   - Session duration stats
+   - Time-of-day analysis
+
+2. **Emoji Usage**
+   - Frequency of basic emojis
+   - Most used emojis
+   - Feature usage related to emojis
+
+3. **Media**
+   - Frequency and volume of image uploads
+
+4. **Region**
+   - Heatmaps of regional usage
+   - Regional emoji usage analysis
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js  
+- **Backend**: Node.js  
+- **Database**: MongoDB  
+
+---
+
+## 📂 Folder Structure & More
+Feel free to contribute or raise issues. PRs are welcome!
